@@ -10,4 +10,9 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+  // GitHub Pages 配置
+  base: '/tiptapEditor/',
+  build: {
+    outDir: 'dist',
+  },
 })
