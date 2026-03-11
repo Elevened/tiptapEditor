@@ -11,6 +11,10 @@ on:
   # 允许手动触发
   workflow_dispatch:
 
+# 设置环境变量使用 Node.js 24
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # 设置 GITHUB_TOKEN 权限
 permissions:
   contents: read
@@ -33,7 +37,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           
       - name: Install pnpm
         uses: pnpm/action-setup@v2
