@@ -1,75 +1,49 @@
-# GitHub Pages 部署工作流
-# 每次推送到 main 分支时自动构建并部署
-
 name: Deploy to GitHub Pages
 
 on:
-  # 在推送到 main 分支时触发
   push:
     branches: ['main']
-  
-  # 允许手动触发
   workflow_dispatch:
 
-# 设置环境变量使用 Node.js 24
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
-# 设置 GITHUB_TOKEN 权限
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 并发控制
 concurrency:
   group: 'pages'
   cancel-in-progress: true
 
 jobs:
-  # 构建任务
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '20'
           
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
+      - name: Install dependencies with npm
+        run: |
+          # 使用 npm 而不是 pnpm，避免兼容性问题
+          npm install
           
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Install dependencies
+      - name: Build project
         run: |
-          echo "Installing dependencies..."
-          pnpm install
-          echo "Dependencies installed successfully"
+          npm run build:skip-type-check
           
-      - name: Build
+      - name: Check dist folder
         run: |
-          echo "Starting build..."
-          pnpm run build:skip-type-check
-          echo "Build completed"
-        
-      - name: List dist contents
-        run: |
-          echo "Dist folder contents:"
-          ls -la dist/
-        
+          ls -la dist/ || echo "Dist folder not found"
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
-  # 部署任务
   deploy:
     environment:
       name: github-pages
