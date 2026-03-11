@@ -33,21 +33,32 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
           
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
       - name: Install dependencies
-        run: pnpm install
-        
+        run: |
+          echo "Installing dependencies..."
+          pnpm install
+          echo "Dependencies installed successfully"
+          
       - name: Build
-        run: pnpm run build:skip-type-check
+        run: |
+          echo "Starting build..."
+          pnpm run build:skip-type-check
+          echo "Build completed"
+        
+      - name: List dist contents
+        run: |
+          echo "Dist folder contents:"
+          ls -la dist/
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
