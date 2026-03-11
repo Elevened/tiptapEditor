@@ -1,113 +1,102 @@
-# Tiptap 富文本编辑器演示
+# Tiptap 富文本编辑器
 
-一个基于 Vue 3 + Vite + Tiptap 的富文本编辑器完整实现，集成了所有官方扩展。
+> 基于 Vue 3 + Tiptap 的完整富文本编辑器解决方案
 
-## 功能特性
+<img src="https://img.shields.io/badge/Vue-3.x-green" alt="Vue 3"/> 
+<img src="https://img.shields.io/badge/Tiptap-3.x-blue" alt="Tiptap 3"/> 
+<img src="https://img.shields.io/badge/TypeScript-5.x-blue" alt="TypeScript"/> 
+<img src="https://img.shields.io/badge/License-MIT-yellow" alt="MIT"/>
 
-### 基础编辑功能
-- ✅ **文本样式**：粗体、斜体、下划线、删除线、行内代码
-- ✅ **标题层级**：H1 - H6
-- ✅ **对齐方式**：左对齐、居中、右对齐、两端对齐
-- ✅ **列表**：无序列表、有序列表、任务列表
-- ✅ **引用块**：支持嵌套引用
-- ✅ **代码块**：支持语法高亮（10+ 语言）
+## ✨ 功能特性
 
-### 表格功能
-- ✅ 插入表格（可指定行列）
-- ✅ 添加/删除行列
-- ✅ 合并/拆分单元格
-- ✅ 可调整表格大小
-- ✅ 表头支持
+### 📝 编辑功能
+- **基础格式**：粗体、斜体、下划线、删除线、行内代码
+- **标题层级**：H1 - H6 六级标题
+- **列表支持**：无序列表、有序列表、任务列表
+- **代码块**：支持语法高亮（JavaScript、TypeScript、CSS 等 13+ 语言）
+- **表格**：可调整大小的表格，支持合并单元格
+- **链接与图片**：链接自动识别，图片支持 Base64
 
-### 媒体支持
-- ✅ **图片**：支持 URL 和 Base64，可拖拽
-- ✅ **视频**：本地视频文件
-- ✅ **YouTube**：嵌入 YouTube 视频
-- ✅ **Iframe**：嵌入网页
+### 🎨 排版功能
+- **文本对齐**：左对齐、居中、右对齐、两端对齐
+- **高亮与颜色**：文本高亮、文字颜色选择器
+- **引用块**：带样式的引用块
+- **分割线**：水平分割线
+- **数学公式**：LaTeX 公式支持
+- **YouTube 视频**：直接嵌入 YouTube 视频
 
-### 高级功能
-- ✅ **链接**：可编辑链接，支持自动链接
-- ✅ **高亮**：多色高亮支持
-- ✅ **颜色**：文字颜色设置
-- ✅ **占位符**：空内容提示
-- ✅ **字符计数**：实时统计字符数和词数
-- ✅ **气泡菜单**：选中文字时显示快捷工具栏
-- ✅ **浮动菜单**：空行输入 `/` 显示格式菜单
-- ✅ **撤销/重做**：完整历史记录支持
-- ✅ **暗色模式**：一键切换主题
+### 🛠️ 工具功能
+- **撤销/重做**：完整的操作历史
+- **Markdown 导入/导出**：支持 .md 文件导入导出
+- **字符统计**：实时显示字符数、字数
+- **节点拖拽**：支持段落和标题拖拽排序
+- **暗色模式**：支持亮色/暗色主题切换
 
-### 扩展集成
-- ✅ StarterKit（18+ 个基础扩展）
-- ✅ Image、Link、Placeholder
-- ✅ Underline、TextAlign、Highlight
-- ✅ Typography、Color、TextStyle
-- ✅ Table（含行列单元格扩展）
-- ✅ CharacterCount、Focus
-- ✅ TaskList、TaskItem
-- ✅ Subscript、Superscript
-- ✅ Youtube、Mention
-- ✅ CodeBlockLowlight（语法高亮）
+### ⚡ 交互体验
+- **气泡菜单**：选中文字时显示快捷工具栏
+- **Slash 菜单**：输入 `/` 快速插入内容
+- **设置面板**：按 B+U+G 快捷键打开设置
+- **快捷键支持**：完整的键盘快捷键支持
 
-## 技术栈
-
-- **框架**：Vue 3 + Composition API
-- **构建工具**：Vite
-- **编辑器**：Tiptap + ProseMirror
-- **路由**：Vue Router
-- **语法高亮**：Lowlight + Highlight.js
-- **语言**：TypeScript
-
-## 项目结构
-
-```
-src/
-├── components/
-│   └── editor/
-│       ├── RichEditor.vue          # 主编辑器组件
-│       ├── EditorToolbar.vue       # 工具栏
-│       ├── BubbleMenuContent.vue   # 气泡菜单
-│       ├── FloatingMenuContent.vue # 浮动菜单
-│       ├── EditorStatusBar.vue     # 状态栏
-│       ├── ToolbarButton.vue       # 工具栏按钮
-│       └── index.ts                # 组件导出
-├── extensions/
-│   ├── index.ts                    # 扩展配置
-│   └── custom.ts                   # 自定义扩展
-├── styles/
-│   └── editor.css                  # 编辑器样式
-├── views/
-│   └── HomeView.vue                # 主页
-├── App.vue
-└── main.ts
-```
-
-## 快速开始
+## 🚀 快速开始
 
 ### 安装依赖
 
 ```bash
+# 使用 pnpm（推荐）
 pnpm install
+
+# 或使用 npm
+npm install
 ```
 
 ### 启动开发服务器
 
 ```bash
 pnpm dev
+# 或
+npm run dev
 ```
+
+访问 http://localhost:5173 查看编辑器
 
 ### 构建生产版本
 
 ```bash
 pnpm build
+# 或
+npm run build
 ```
 
-### 预览生产构建
+## 📁 项目结构
 
-```bash
-pnpm preview
+```
+tiptap-editor-demo/
+├── src/
+│   ├── components/editor/     # 编辑器组件
+│   │   ├── RichEditor.vue     # 主编辑器组件
+│   │   ├── EditorToolbar.vue  # 工具栏
+│   │   ├── SettingsDrawer.vue # 设置抽屉
+│   │   └── ...
+│   ├── composables/           # 可复用逻辑
+│   │   ├── useEditorConfig.ts # 编辑器配置
+│   │   ├── useEditorSettings.ts # 设置管理
+│   │   └── useMarkdown.ts     # Markdown 操作
+│   ├── extensions/            # Tiptap 扩展
+│   │   ├── index.ts           # 官方扩展配置
+│   │   └── custom.ts          # 自定义扩展
+│   ├── types/                 # TypeScript 类型
+│   │   └── editor.ts          # 编辑器类型定义
+│   ├── styles/                # 样式文件
+│   │   └── editor.css         # 编辑器样式
+│   └── utils/                 # 工具函数
+│       ├── icons.ts           # 图标映射
+│       └── markdown.ts        # Markdown 工具
+├── tiptap-guide.md            # Tiptap 使用指南
+└── README.md                  # 本文件
 ```
 
-## 使用说明
+## 🎯 使用示例
 
 ### 基础用法
 
@@ -116,77 +105,90 @@ pnpm preview
   <RichEditor v-model="content" placeholder="请输入内容..." />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
-import { RichEditor } from '@/components/editor'
+import RichEditor from '@/components/editor/RichEditor.vue'
 
 const content = ref('<p>Hello World!</p>')
 </script>
 ```
 
-### 完整配置
+### 带配置的用法
 
 ```vue
 <template>
   <RichEditor
     v-model="content"
-    placeholder="开始输入..."
+    placeholder="请输入内容..."
     :character-limit="10000"
     :editable="true"
-    @update="onUpdate"
-    ref="editorRef"
   />
 </template>
-
-<script setup>
-import { ref } from 'vue'
-
-const editorRef = ref()
-const content = ref('')
-
-const onUpdate = (editor) => {
-  console.log('HTML:', editor.getHTML())
-  console.log('JSON:', editor.getJSON())
-  console.log('Text:', editor.getText())
-}
-
-// 程序化操作
-const clearContent = () => {
-  editorRef.value?.clearContent()
-}
-
-const setContent = () => {
-  editorRef.value?.setContent('<p>新内容</p>')
-}
-</script>
 ```
 
-## 快捷键
+## ⌨️ 快捷键
 
 | 快捷键 | 功能 |
 |--------|------|
-| `Ctrl+B` | 粗体 |
-| `Ctrl+I` | 斜体 |
-| `Ctrl+U` | 下划线 |
-| `Ctrl+K` | 插入链接 |
-| `Ctrl+Z` | 撤销 |
-| `Ctrl+Y` / `Ctrl+Shift+Z` | 重做 |
-| `Tab` | 列表缩进 |
-| `Shift+Tab` | 列表反缩进 |
+| `Ctrl + B` | 粗体 |
+| `Ctrl + I` | 斜体 |
+| `Ctrl + U` | 下划线 |
+| `Ctrl + K` | 插入链接 |
+| `Ctrl + Z` | 撤销 |
+| `Ctrl + Y` | 重做 |
+| `Ctrl + /` | 代码块 |
+| `B + U + G` | 打开设置 |
 
-## 浏览器支持
+## 🧩 技术栈
 
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
+- **Vue 3**：渐进式 JavaScript 框架
+- **TypeScript**：类型安全的 JavaScript 超集
+- **Tiptap**：无头富文本编辑器框架
+- **ProseMirror**：强大的文档模型
+- **Vite**：下一代前端构建工具
+- **Iconify**：统一的图标系统
+- **Lowlight**：代码语法高亮
 
-## 开源协议
+## 📦 核心依赖
 
-MIT License
+```json
+{
+  "@tiptap/core": "^3.20.1",
+  "@tiptap/vue-3": "^3.20.1",
+  "@tiptap/starter-kit": "^3.20.1",
+  "@vueuse/core": "^14.2.1",
+  "vue": "^3.5.25"
+}
+```
 
-## 参考资源
+## 📖 文档
 
+- [Tiptap 完全使用指南](./tiptap-guide.md) - 详细的 Tiptap 学习文档
 - [Tiptap 官方文档](https://tiptap.dev/)
-- [ProseMirror 文档](https://prosemirror.net/docs/)
-- [Vue 3 文档](https://vuejs.org/)
+- [ProseMirror 指南](https://prosemirror.net/docs/guide/)
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 📄 许可证
+
+[MIT](./LICENSE)
+
+---
+
+<details>
+<summary>📸 界面预览</summary>
+
+### 编辑器主界面
+- 工具栏：包含所有格式化工具
+- 编辑区：支持富文本编辑
+- 状态栏：显示字符统计
+
+### 功能展示
+- 支持 Markdown 导入/导出
+- 支持代码块语法高亮
+- 支持表格编辑
+- 支持暗色模式
+
+</details>
