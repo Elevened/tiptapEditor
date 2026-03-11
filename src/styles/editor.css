@@ -1,0 +1,607 @@
+/* 编辑器基础样式 */
+.ProseMirror {
+  outline: none;
+  min-height: 400px;
+  padding: 24px;
+  line-height: 1.8;
+  color: #24292f;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* 段落 */
+.ProseMirror p {
+  margin: 0 0 16px 0;
+  line-height: 1.8;
+}
+
+.ProseMirror p:last-child {
+  margin-bottom: 0;
+}
+
+/* 标题 */
+.ProseMirror h1,
+.ProseMirror h2,
+.ProseMirror h3,
+.ProseMirror h4,
+.ProseMirror h5,
+.ProseMirror h6 {
+  margin: 24px 0 16px 0;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1f2328;
+}
+
+.ProseMirror h1 {
+  font-size: 2em;
+  border-bottom: 1px solid #d8dee4;
+  padding-bottom: 8px;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #d8dee4;
+  padding-bottom: 6px;
+}
+
+.ProseMirror h3 {
+  font-size: 1.25em;
+}
+
+.ProseMirror h4 {
+  font-size: 1em;
+}
+
+.ProseMirror h5 {
+  font-size: 0.875em;
+}
+
+.ProseMirror h6 {
+  font-size: 0.85em;
+  color: #656d76;
+}
+
+/* 列表 */
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 24px;
+  margin: 16px 0;
+}
+
+.ProseMirror li {
+  margin: 8px 0;
+}
+
+.ProseMirror li > p {
+  margin: 0;
+}
+
+/* 任务列表 */
+.ProseMirror ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+}
+
+.ProseMirror ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ProseMirror ul[data-type="taskList"] li > label {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ProseMirror ul[data-type="taskList"] li > label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.ProseMirror ul[data-type="taskList"] li > div {
+  flex: 1;
+}
+
+.ProseMirror ul[data-type="taskList"] li[data-checked="true"] > div {
+  text-decoration: line-through;
+  color: #656d76;
+}
+
+/* 引用 */
+.ProseMirror blockquote {
+  border-left: 4px solid #d0d7de;
+  padding-left: 16px;
+  margin: 16px 0;
+  color: #656d76;
+  font-style: italic;
+}
+
+.ProseMirror blockquote p {
+  margin: 0;
+}
+
+/* 代码块 */
+.ProseMirror pre {
+  background: #f6f8fa;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 16px 0;
+}
+
+.ProseMirror pre code {
+  display: block;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  border-radius: 0;
+}
+
+/* 行内代码 */
+.ProseMirror code {
+  background: rgba(175, 184, 193, 0.2);
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 85%;
+  color: inherit;
+}
+
+/* 高亮 */
+.ProseMirror mark {
+  background-color: #fff8c5;
+  border-radius: 4px;
+  padding: 0.125em 0;
+  box-decoration-break: clone;
+}
+
+/* 链接 */
+.ProseMirror a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+.ProseMirror a:hover {
+  text-decoration: underline;
+}
+
+/* 图片 */
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 16px 0;
+}
+
+.ProseMirror img.ProseMirror-selectednode {
+  outline: 3px solid #58a6ff;
+  outline-offset: 2px;
+}
+
+/* 水平线 */
+.ProseMirror hr {
+  border: none;
+  border-top: 2px solid #d0d7de;
+  margin: 24px 0;
+}
+
+/* 表格 */
+.ProseMirror table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.ProseMirror table td,
+.ProseMirror table th {
+  border: 1px solid #d0d7de;
+  padding: 8px 12px;
+  min-width: 100px;
+  text-align: left;
+}
+
+.ProseMirror table th {
+  background-color: #f6f8fa;
+  font-weight: 600;
+}
+
+.ProseMirror table .selectedCell:after {
+  background: rgba(200, 200, 255, 0.4);
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.ProseMirror table .column-resize-handle {
+  background-color: #0969da;
+  bottom: -2px;
+  position: absolute;
+  right: -2px;
+  pointer-events: none;
+  top: 0;
+  width: 4px;
+}
+
+/* 占位符 */
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #8c959f;
+  pointer-events: none;
+  height: 0;
+}
+
+/* 选中样式 */
+.ProseMirror ::selection {
+  background: #b4d7fe;
+}
+
+.ProseMirror.ProseMirror-focused {
+  outline: none;
+}
+
+/* 间隙光标 */
+.ProseMirror-gapcursor {
+  display: none;
+  pointer-events: none;
+  position: absolute;
+}
+
+.ProseMirror-gapcursor:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+  border-top: 1px solid black;
+  animation: ProseMirror-cursor-blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes ProseMirror-cursor-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* 视频 */
+.ProseMirror .video-wrapper {
+  margin: 16px 0;
+}
+
+.ProseMirror .video-wrapper video {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Iframe */
+.ProseMirror .iframe-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 16px 0;
+  border-radius: 8px;
+}
+
+.ProseMirror .iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* YouTube */
+.ProseMirror .youtube-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 16px 0;
+  border-radius: 8px;
+}
+
+.ProseMirror .youtube-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 下标上标 */
+.ProseMirror sub,
+.ProseMirror sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.ProseMirror sub {
+  bottom: -0.25em;
+}
+
+.ProseMirror sup {
+  top: -0.5em;
+}
+
+/* 拖拽手柄样式 */
+.ProseMirror {
+  position: relative;
+}
+
+/* Tiptap 拖拽手柄容器 */
+.ProseMirror .tiptap-drag-handle {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #9ca3af;
+  font-size: 12px;
+  cursor: grab;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 50;
+}
+
+.ProseMirror .tiptap-drag-handle:hover {
+  opacity: 1 !important;
+  color: #6b7280;
+}
+
+.ProseMirror .tiptap-drag-handle:active {
+  cursor: grabbing;
+}
+
+/* 悬停块级元素时显示拖拽手柄 */
+.ProseMirror > *:hover ~ .tiptap-drag-handle,
+.ProseMirror > *:hover + .tiptap-drag-handle,
+.ProseMirror .tiptap-drag-handle:hover {
+  opacity: 0.6;
+}
+
+/* 自定义拖拽手柄 */
+.custom-drag-handle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  border-radius: 6px;
+  background: transparent;
+  transition: all 0.2s ease;
+  cursor: grab;
+}
+
+.custom-drag-handle:hover {
+  color: #6b7280;
+  background: #f3f4f6;
+}
+
+.custom-drag-handle:active {
+  cursor: grabbing;
+}
+
+/* 拖拽时的样式 */
+.ProseMirror .ProseMirror-dragging {
+  opacity: 0.5;
+}
+
+/* 暗色模式 */
+.dark-mode .tiptap-drag-handle {
+  color: #6b7280;
+}
+
+.dark-mode .tiptap-drag-handle:hover {
+  color: #9ca3af;
+}
+
+.dark-mode .custom-drag-handle:hover {
+  background: #374151;
+}
+
+/* 拖拽时的样式 */
+.ProseMirror .ProseMirror-dragging {
+  opacity: 0.5;
+}
+
+.ProseMirror .ProseMirror-drop-target {
+  position: relative;
+}
+
+.ProseMirror .ProseMirror-drop-target::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: #0969da;
+  border-radius: 1px;
+}
+
+/* 暗色主题适配 */
+.dark-mode .ProseMirror {
+  color: #c9d1d9;
+  background: #0d1117;
+}
+
+.dark-mode .ProseMirror > *:hover::before {
+  color: #30363d;
+}
+
+.dark-mode .ProseMirror > *:hover::before:hover {
+  color: #8b949e;
+  background: #21262d;
+}
+
+.dark-mode .ProseMirror h1,
+.dark-mode .ProseMirror h2,
+.dark-mode .ProseMirror h3,
+.dark-mode .ProseMirror h4,
+.dark-mode .ProseMirror h5,
+.dark-mode .ProseMirror h6 {
+  color: #f0f6fc;
+  border-color: #30363d;
+}
+
+.dark-mode .ProseMirror h6 {
+  color: #8b949e;
+}
+
+.dark-mode .ProseMirror blockquote {
+  border-left-color: #30363d;
+  color: #8b949e;
+}
+
+.dark-mode .ProseMirror pre {
+  background: #161b22;
+}
+
+.dark-mode .ProseMirror code {
+  background: rgba(110, 118, 129, 0.4);
+}
+
+.dark-mode .ProseMirror a {
+  color: #58a6ff;
+}
+
+.dark-mode .ProseMirror hr {
+  border-top-color: #30363d;
+}
+
+.dark-mode .ProseMirror table td,
+.dark-mode .ProseMirror table th {
+  border-color: #30363d;
+}
+
+.dark-mode .ProseMirror table th {
+  background-color: #161b22;
+}
+
+.dark-mode .ProseMirror p.is-editor-empty:first-child::before {
+  color: #484f58;
+}
+
+.dark-mode .ProseMirror ::selection {
+  background: #1f6feb;
+}
+
+.dark-mode .ProseMirror mark {
+  background-color: rgba(210, 153, 34, 0.4);
+}
+
+/* 语法高亮样式 - GitHub 风格 */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  color: #24292f;
+  background: transparent;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #6e7781;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #cf222e;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #0550ae;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #0a3069;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #8250df;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #953800;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #116329;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #0a3069;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #8250df;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0550ae;
+}
+
+.hljs-meta {
+  color: #6e7781;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #ffebe9;
+}
+
+.hljs-addition {
+  background: #dafbe1;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
