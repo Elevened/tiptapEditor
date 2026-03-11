@@ -19,28 +19,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/checkout@v5
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: '20'
-          
-      - name: Install dependencies with npm
-        run: |
-          # 使用 npm 而不是 pnpm，避免兼容性问题
-          npm install
-          
+          version: 10.28.1
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+
+      - name: Install dependencies with pnpm
+        run: pnpm install --frozen-lockfile
+
       - name: Build project
-        run: |
-          npm run build:skip-type-check
-          
+        run: pnpm run build:skip-type-check
+
       - name: Check dist folder
-        run: |
-          ls -la dist/ || echo "Dist folder not found"
-          
+        run: ls -la dist/ || echo "Dist folder not found"
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: './dist'
 
