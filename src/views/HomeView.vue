@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import RichEditor from '../components/editor/RichEditor.vue'
 
 const editorRef = ref()
@@ -85,6 +85,10 @@ const editor = new Editor({
 `
 
 const content = ref(defaultContent)
+
+onMounted(() => {
+  window.scrollTo(0, 0)
+})
 
 const jsonContent = computed(() => {
   return JSON.stringify(editorRef.value?.getJSON(), null, 2)
